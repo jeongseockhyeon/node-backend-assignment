@@ -4,10 +4,15 @@
 // console.log("alalala");
 const a = 5
 const b = 2
-const myName = 'jsh'
+// const myName = 'jsh'
 
-console.log(a + b)
-console.log(a * b)
-console.log(a / b)
+// let a= 5
+// let b =2
+let myName = 'jsh'
 
-console.log('hello' + myName)
+// console.log(a + b)
+// console.log(a * b)
+// console.log(a / b)
+myName = 'jeongseekhyeon'
+// console.log('hello' + myName)
+console.log('your new name is' + myName)
