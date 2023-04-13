@@ -17,5 +17,12 @@
 // console.log('hello' + myName)
 // console.log('your new name is' + myName)
 
-const amIFat = false
+// const amIFat = false
+// console.log(amIFat)
+
+const amIFat = null
+let something
 console.log(amIFat)
+//null
+console.log(something)
+//undefined
