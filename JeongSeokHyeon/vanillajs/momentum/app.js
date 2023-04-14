@@ -47,11 +47,11 @@
 // const toBuy = ['potato', 'tomato', 'pizza']
 // console.log(toBuy[4])
 
-const player = {
-  name: 'jsh',
-  points: 10,
-  fat: true,
-}
+// const player = {
+//   name: 'jsh',
+//   points: 10,
+//   fat: true,
+// }
 // console.log(player)
 // console.log(player.name)
 // console.log(player['name'])
@@ -60,8 +60,36 @@ const player = {
 // player.fat = false
 // console.log(player)
 
-console.log(player)
-player.lastName = 'potato'
-console.log(player)
-player.points = player.points + 15
-console.log(player.points)
+// console.log(player)
+// player.lastName = 'potato'
+// console.log(player)
+// player.points = player.points + 15
+// console.log(player.points)
+
+// function sayHello(nameOfPerson, age) {
+//   console.log('Hellow my name is' + nameOfPerson + "and I'm" + age)
+// }
+
+// sayHello('jsh', 24)
+// sayHello('nico', 23)
+// sayHello('dal', 21)
+
+//NaN = Not a Number
+// function plus(firstNumver, secondNumber) {
+//   console.log(firstNumver + secondNumber)
+// }
+// function devide(a, b) {
+//   console.log(a / b)
+// }
+
+// plus(8, 60)
+// devide(90, 15)
+
+const player = {
+  name: 'jsh',
+  sayHello: function (otherPersonName) {
+    console.log('hello!' + otherPersonName)
+  },
+}
+console.log(player.name)
+player.sayHello('nico')
