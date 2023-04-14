@@ -44,5 +44,24 @@
 // daysOfWeek.push('sun')
 // console.log(daysOfWeek)
 
-const toBuy = ['potato', 'tomato', 'pizza']
-console.log(toBuy[4])
+// const toBuy = ['potato', 'tomato', 'pizza']
+// console.log(toBuy[4])
+
+const player = {
+  name: 'jsh',
+  points: 10,
+  fat: true,
+}
+// console.log(player)
+// console.log(player.name)
+// console.log(player['name'])
+
+// console.log(player)
+// player.fat = false
+// console.log(player)
+
+console.log(player)
+player.lastName = 'potato'
+console.log(player)
+player.points = player.points + 15
+console.log(player.points)
