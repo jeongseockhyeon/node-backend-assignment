@@ -163,26 +163,54 @@
 // const KrAge = calculateKrAge(age)
 // console.log(KrAge)
 
-const calculator = {
-  add: function (a, b) {
-    return a + b
-  },
-  min: function (a, b) {
-    return a - b
-  },
-  times: function (a, b) {
-    return a * b
-  },
-  div: function (a, b) {
-    return a / b
-  },
-  power: function (a, b) {
-    return a ** b
-  },
+// const calculator = {
+//   add: function (a, b) {
+//     return a + b
+//   },
+//   min: function (a, b) {
+//     return a - b
+//   },
+//   times: function (a, b) {
+//     return a * b
+//   },
+//   div: function (a, b) {
+//     return a / b
+//   },
+//   power: function (a, b) {
+//     return a ** b
+//   },
+// }
+
+// const plusResult = calculator.add(10, 5)
+// const minusResult = calculator.min(plusResult, 10)
+// const timesResult = calculator.times(10, minusResult)
+// const divideResult = calculator.div(timesResult, plusResult)
+// const powerResult = calculator.power(divideResult, minusResult)
+
+// const age = prompt('How old are you?')
+// console.log(typeof age, typeof parseInt(age))
+// console.log(age, parseInt(age))
+
+const age = parseInt(prompt('How old are you'))
+// console.log(isNaN(age))
+if (isNaN(age) || age < 0) {
+  console.log('Please write a Number')
+} else if (age < 18) {
+  console.log('you are too young')
+} else if (age >= 18 && age <= 50) {
+  console.log('You con drink')
+} else if (age > 50 && age <= 80) {
+  console.log('You should exercise')
+} else if (age > 80) {
+  console.log('You can do whatever you want')
 }
 
-const plusResult = calculator.add(10, 5)
-const minusResult = calculator.min(plusResult, 10)
-const timesResult = calculator.times(10, minusResult)
-const divideResult = calculator.div(timesResult, plusResult)
-const powerResult = calculator.power(divideResult, minusResult)
+// true || true === true
+// false || true === true
+// true || false === true
+// false || false === false
+
+// true && true === true
+// true && false === false
+// false && true === false
+// false && false === false
