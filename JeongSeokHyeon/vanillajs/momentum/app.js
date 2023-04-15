@@ -75,21 +75,82 @@
 // sayHello('dal', 21)
 
 //NaN = Not a Number
-// function plus(firstNumver, secondNumber) {
+// function minusFive(firstNumver, secondNumber) {
 //   console.log(firstNumver + secondNumber)
 // }
 // function devide(a, b) {
 //   console.log(a / b)
 // }
 
-// plus(8, 60)
+// minusFive(8, 60)
 // devide(90, 15)
 
-const player = {
-  name: 'jsh',
-  sayHello: function (otherPersonName) {
-    console.log('hello!' + otherPersonName)
-  },
-}
-console.log(player.name)
-player.sayHello('nico')
+// const player = {
+//   name: 'jsh',
+//   sayHello: function (otherPersonName) {
+//     console.log('hello!' + otherPersonName)
+//   },
+// }
+// console.log(player.name)
+// player.sayHello('nico')
+
+//recap
+
+// const a= 5
+// const Fat=true
+// let Fat = true
+// Fat = false
+
+// const a = true
+// const a ='true'
+// const a = null
+// let hello
+// console.log(hello)
+
+// const days = [1,2,false,true,null,undefined,'text',me]
+// const toBuy = ['potato', 'tomato', 'pizza']
+// console.log(toBuy)
+// toBuy[2] = 'water'
+// console.log(toBuy)
+// toBuy.push('meet')
+// console.log(toBuy)
+
+// const days = ['mon', 'tue', 'wed']
+// const player = {
+//   name: 'jsh',
+//   age: 24,
+// }
+
+// console.log(player, console)
+// console.log(player.name)
+// player.name = 'jeong'
+// console.log(player)
+// player.sexy = false
+// console.log(player)
+
+// function minusFive(potato) {
+//   console.log(potato - 5)
+// }
+
+// minusFive(5, 10, 12, 2, 17)
+// alert('errrr')
+
+// const calculator = {
+//   add: function (a, b) {
+//     console.log(a + b)
+//   },
+//   min: function (a, b) {
+//     console.log(a - b)
+//   },
+//   div: function (a, b) {
+//     console.log(a / b)
+//   },
+//   power: function (a, b) {
+//     console.log(a ** b)
+//   },
+// }
+
+// calculator.add(10, 5)
+// calculator.min(10, 5)
+// calculator.div(10, 5)
+// calculator.power(10, 5)
