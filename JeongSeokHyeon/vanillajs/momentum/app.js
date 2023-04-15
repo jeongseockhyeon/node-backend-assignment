@@ -154,3 +154,35 @@
 // calculator.min(10, 5)
 // calculator.div(10, 5)
 // calculator.power(10, 5)
+
+// const age = 24
+// function calculateKrAge(ageOfForeigner) {
+//   return ageOfForeigner + 2
+// }
+
+// const KrAge = calculateKrAge(age)
+// console.log(KrAge)
+
+const calculator = {
+  add: function (a, b) {
+    return a + b
+  },
+  min: function (a, b) {
+    return a - b
+  },
+  times: function (a, b) {
+    return a * b
+  },
+  div: function (a, b) {
+    return a / b
+  },
+  power: function (a, b) {
+    return a ** b
+  },
+}
+
+const plusResult = calculator.add(10, 5)
+const minusResult = calculator.min(plusResult, 10)
+const timesResult = calculator.times(10, minusResult)
+const divideResult = calculator.div(timesResult, plusResult)
+const powerResult = calculator.power(divideResult, minusResult)
