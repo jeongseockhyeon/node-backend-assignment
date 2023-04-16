@@ -189,10 +189,11 @@
 
 // const age = prompt('How old are you?')
 // console.log(typeof age, typeof parseInt(age))
-// console.log(age, parseInt(age))
+
+console.log(age, parseInt(age))
 
 const age = parseInt(prompt('How old are you'))
-// console.log(isNaN(age))
+console.log(isNaN(age))
 if (isNaN(age) || age < 0) {
   console.log('Please write a Number')
 } else if (age < 18) {
@@ -201,6 +202,8 @@ if (isNaN(age) || age < 0) {
   console.log('You con drink')
 } else if (age > 50 && age <= 80) {
   console.log('You should exercise')
+} else if (age === 100) {
+  console.log('wow you are wise')
 } else if (age > 80) {
   console.log('You can do whatever you want')
 }
@@ -214,3 +217,6 @@ if (isNaN(age) || age < 0) {
 // true && false === false
 // false && true === false
 // false && false === false
+
+// if ((a && b) || (c && d) || x || y) {
+// }
