@@ -221,4 +221,12 @@
 // if ((a && b) || (c && d) || x || y) {
 // }
 
-document.title = 'Hellow! From JS!'
+// document.title = 'Hellow! From JS!'
+
+const title = document.getElementById('title')
+// console.dir(title)
+
+title.innerText = 'Got you'
+
+console.log(title.id)
+console.log(title.className)
