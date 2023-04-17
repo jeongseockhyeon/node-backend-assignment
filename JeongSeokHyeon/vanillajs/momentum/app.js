@@ -223,10 +223,22 @@
 
 // document.title = 'Hellow! From JS!'
 
-const title = document.getElementById('title')
+// const title = document.getElementById('title')
 // console.dir(title)
 
-title.innerText = 'Got you'
+// title.innerText = 'Got you'
 
-console.log(title.id)
-console.log(title.className)
+// console.log(title.id)
+// console.log(title.className)
+
+// const title = document.getElementById('something')
+// console.log(title.className)
+
+// const hellos = document.getElementsByClassName('hello')
+// console.log(hellos)
+
+// const title = document.getElementsByTagName('h1')
+// const title = document.getElementsByTagName('h1')
+const title = document.querySelector('.hello h1')
+title.innerText = 'Hello'
+console.log(title)
