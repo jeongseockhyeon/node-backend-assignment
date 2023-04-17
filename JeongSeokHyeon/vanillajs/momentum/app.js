@@ -239,6 +239,13 @@
 
 // const title = document.getElementsByTagName('h1')
 // const title = document.getElementsByTagName('h1')
-const title = document.querySelector('.hello h1')
-title.innerText = 'Hello'
-console.log(title)
+const title = document.querySelector('div.hello:first-child h1')
+// title.innerText = 'Hello'
+// console.log(title)
+
+// title.style.color = 'blue'
+function handleTitleClick() {
+  title.style.color = 'blue'
+}
+
+title.addEventListener('click', handleTitleClick)
