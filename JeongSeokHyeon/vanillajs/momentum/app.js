@@ -221,39 +221,57 @@
 // if ((a && b) || (c && d) || x || y) {
 // }
 
-// document.title = 'Hellow! From JS!'
+// document.h1 = 'Hellow! From JS!'
 
-// const title = document.getElementById('title')
-// console.dir(title)
+// const h1 = document.getElementById('h1')
+// console.dir(h1)
 
-// title.innerText = 'Got you'
+// h1.innerText = 'Got you'
 
-// console.log(title.id)
-// console.log(title.className)
+// console.log(h1.id)
+// console.log(h1.className)
 
-// const title = document.getElementById('something')
-// console.log(title.className)
+// const h1 = document.getElementById('something')
+// console.log(h1.className)
 
 // const hellos = document.getElementsByClassName('hello')
 // console.log(hellos)
 
-// const title = document.getElementsByTagName('h1')
-// const title = document.getElementsByTagName('h1')
-const title = document.querySelector('div.hello:first-child h1')
-// title.innerText = 'Hello'
-// console.log(title)
+// const h1 = document.getElementsByTagName('h1')
+// const h1 = document.getElementsByTagName('h1')
+const h1 = document.querySelector('div.hello:first-child h1')
+// h1.innerText = 'Hello'
+// console.log(h1)
 
-// title.style.color = 'blue'
+// h1.style.color = 'blue'
 function handleTitleClick() {
-  title.style.color = 'red'
+  h1.style.color = 'red'
 }
 function handleMouseEnter() {
-  title.innerText = 'Mouse is here'
+  h1.innerText = 'Mouse is here'
 }
 function handleMouseLeave() {
-  title.innerText = 'Mouse is gone'
+  h1.innerText = 'Mouse is gone'
+}
+function handleWindowResize() {
+  document.body.style.backgroundColor = 'tomato'
+}
+function handleWindowCopy() {
+  alert('copier')
+}
+function handleWindowOffline() {
+  alert('SOS  no wifi')
+}
+function handleWindowOnline() {
+  alert('ALL GOOD')
 }
 
-title.addEventListener('click', handleTitleClick)
-title.addEventListener('mouseenter', handleMouseEnter)
-title.addEventListener('mouseleave', handleMouseLeave)
+h1.addEventListener('click', handleTitleClick)
+h1.addEventListener('mouseenter', handleMouseEnter)
+h1.addEventListener('mouseleave', handleMouseLeave)
+// h1.onClick = handleTitleClick
+
+window.addEventListener('resize', handleWindowResize)
+window.addEventListener('copy', handleWindowCopy)
+window.addEventListener('offline', handleWindowOffline)
+window.addEventListener('online', handleWindowOnline)
