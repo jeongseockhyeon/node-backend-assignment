@@ -17,13 +17,14 @@ function deleteToDo(event) {
 
 function paintToDo(newTodo) {
   const li = document.createElement('li')
+  li.id = newTodo.id
   const span = document.createElement('span')
+  span.innerText = newTodo.text
   const button = document.createElement('button')
   button.innerText = 'X'
   button.addEventListener('click', deleteToDo)
   li.appendChild(span)
   li.appendChild(button)
-  span.innerText = newTodo
   toDoList.appendChild(li)
 }
 
@@ -31,8 +32,12 @@ function handleToDoSubmit(event) {
   event.preventDefault()
   const newTodo = toDoinput.value
   toDoinput.value = ''
-  toDos.push(newTodo)
-  paintToDo(newTodo)
+  const newTodoObj = {
+    text: newTodo,
+    id: Date.now(),
+  }
+  toDos.push(newTodoObj)
+  paintToDo(newTodoObj)
   saveToDos()
 }
 
