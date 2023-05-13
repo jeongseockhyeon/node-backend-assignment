@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 
@@ -21,6 +22,12 @@ app.get('/write', function (요청, 응답) {
 app.post('/add', function (요청, 응답) {
   console.log(요청.body)
   응답.send('요청 전송 완료')
+  db.collection('post').insertOne(
+    { 제목: 요청.body.title, 날짜: 요청.body.date },
+    function () {
+      console.log('저장 완료')
+    }
+  )
 })
 
 var db
