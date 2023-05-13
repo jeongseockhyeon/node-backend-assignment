@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
+app.use('/public', express.static('public'))
 
 const MongoClient = require('mongodb').MongoClient
 
@@ -14,7 +15,7 @@ app.get('/beauty', function (요청, 응답) {
   응답.send('뷰티용품 쇼핑할 수 있는 페이지입니다')
 })
 app.get('/', function (요청, 응답) {
-  응답.sendFile(__dirname + '/index.html')
+  응답.render('index.ejs')
 })
 app.get('/write', function (요청, 응답) {
   응답.sendFile(__dirname + '/write.html')
@@ -26,6 +27,15 @@ app.get('/list', function (요청, 응답) {
       console.log(결과)
       응답.render('list.ejs', { posts: 결과 })
     })
+})
+
+app.get('/detail/:id', function (요청, 응답) {
+  db.collection('post').findOne(
+    { _id: parseInt(요청.params.id) },
+    function (에러, 결과) {
+      응답.render('detail.ejs', { data: 결과 })
+    }
+  )
 })
 
 app.delete('/delete', function (요청, 응답) {
