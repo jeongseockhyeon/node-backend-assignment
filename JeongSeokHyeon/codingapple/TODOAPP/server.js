@@ -19,6 +19,14 @@ app.get('/', function (요청, 응답) {
 app.get('/write', function (요청, 응답) {
   응답.sendFile(__dirname + '/write.html')
 })
+app.get('/list', function (요청, 응답) {
+  db.collection('post')
+    .find()
+    .toArray(function (에러, 결과) {
+      console.log(결과)
+      응답.render('list.ejs', { posts: 결과 })
+    })
+})
 app.post('/add', function (요청, 응답) {
   console.log(요청.body)
   응답.send('요청 전송 완료')
