@@ -1,10 +1,13 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-app.set('view engine', 'ejs')
+const methodOverride = require('method-override')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 app.use('/public', express.static('public'))
+app.use(methodOverride('_method'))
+
+app.set('view engine', 'ejs')
 
 const MongoClient = require('mongodb').MongoClient
 
@@ -91,3 +94,12 @@ MongoClient.connect(
     })
   }
 )
+
+app.get('/edit/:id', function (요청, 응답) {
+  db.collection('post').findOne(
+    { _id: parseInt(요청.params.id) },
+    function (에러, 결과) {
+      응답.render('edit.ejs', { post: 결과 })
+    }
+  )
+})
