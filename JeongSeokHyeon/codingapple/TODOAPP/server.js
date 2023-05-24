@@ -223,3 +223,6 @@ app.get('/search', (요청, 응답) => {
       응답.render('search.ejs', { posts: 결과 })
     })
 })
+
+app.use('/shop', require('./routes/shop'))
+app.use('/board/sub', require('./routes/board'))
