@@ -41,38 +41,6 @@ app.get('/detail/:id', function (요청, 응답) {
   )
 })
 
-app.delete('/delete', function (요청, 응답) {
-  요청.body._id = parseInt(요청.body._id)
-  db.collection('post').deleteOne(요청.body, function (에러, 결과) {
-    console.log('삭제완료')
-  })
-  응답.send('삭제완료')
-})
-
-app.post('/add', function (요청, 응답) {
-  db.collection('counter').findOne(
-    { name: '게시물갯수' },
-    function (에러, 결과) {
-      var 총게시물갯수 = 결과.totalpost
-      db.collection('post').insertOne(
-        { _id: 총게시물갯수 + 1, 제목: 요청.body.title, 날짜: 요청.body.date },
-        function (에러, 결과) {
-          db.collection('counter').updateOne(
-            { name: '게시물갯수' },
-            { $inc: { totalpost: 1 } },
-            function (에러, 결과) {
-              if (에러) {
-                return console.log('저장 완료')
-              }
-              응답.send('요청 전송 완료')
-            }
-          )
-        }
-      )
-    }
-  )
-})
-
 var db
 
 MongoClient.connect(
@@ -184,6 +152,54 @@ passport.deserializeUser(function (아이디, done) {
   db.collection('login').findOne({ id: 아이디 }, function (에러, 결과) {
     done(null, 결과)
   })
+})
+
+app.post('/add', function (요청, 응답) {
+  db.collection('counter').findOne(
+    { name: '게시물갯수' },
+    function (에러, 결과) {
+      var 총게시물갯수 = 결과.totalpost
+      var 저장할거 = {
+        _id: 총게시물갯수 + 1,
+        작성자: 요청.user._id,
+        제목: 요청.body.title,
+        날짜: 요청.body.date,
+      }
+      db.collection('post').insertOne(저장할거, function (에러, 결과) {
+        db.collection('counter').updateOne(
+          { name: '게시물갯수' },
+          { $inc: { totalpost: 1 } },
+          function (에러, 결과) {
+            if (에러) {
+              return console.log('저장 완료')
+            }
+            응답.send('요청 전송 완료')
+          }
+        )
+      })
+    }
+  )
+})
+app.delete('/delete', function (요청, 응답) {
+  요청.body._id = parseInt(요청.body._id)
+
+  var 삭제할데이터 = { _id: 요청.body._id, 작성자: 요청.user._id }
+  db.collection('post').deleteOne(요청.body, function (에러, 결과) {
+    console.log('삭제완료')
+  })
+  if (에러) {
+    console.log(에러)
+  }
+  응답.status(200).send({ message: '성공했습니다.' })
+})
+
+app.post('/register', function (요청, 응답) {
+  db.collection('login').insertOne(
+    { id: 요청.body.id, pw: 요청.body.pw },
+    function (에러, 결과) {
+      응답.redirect('/')
+    }
+  )
 })
 
 app.get('/search', (요청, 응답) => {
