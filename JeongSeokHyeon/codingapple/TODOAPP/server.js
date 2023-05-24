@@ -226,3 +226,35 @@ app.get('/search', (요청, 응답) => {
 
 app.use('/shop', require('./routes/shop'))
 app.use('/board/sub', require('./routes/board'))
+
+let multer = require('multer')
+
+var stortage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/image')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  },
+  filefilter: function (req, file, cb) {
+    var ext = path.extname(file.originalname)
+    if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+      return cb(new Error('PNG, JPG만 업로드하세요'))
+    }
+    cb(null, true)
+  },
+})
+
+var upload = multer({ storage: stortage })
+
+app.get('/upload', function (요청, 응답) {
+  응답.render('upload.ejs')
+})
+
+app.post('/upload', upload.single('profile'), function (요청, 응답) {
+  응답.send('업로드완료')
+})
+
+app.get('/image/:imageName', function (요청, 응답) {
+  응답.sendFile(__dirname + '/public/image/' + 요청.params.imageName)
+})
