@@ -184,13 +184,13 @@ app.delete('/delete', function (요청, 응답) {
   요청.body._id = parseInt(요청.body._id)
 
   var 삭제할데이터 = { _id: 요청.body._id, 작성자: 요청.user._id }
-  db.collection('post').deleteOne(요청.body, function (에러, 결과) {
+  db.collection('post').deleteOne(삭제할데이터, function (에러, 결과) {
     console.log('삭제완료')
+    if (결과) {
+      console.log(결과)
+    }
+    응답.status(200).send({ message: '성공했습니다.' })
   })
-  if (에러) {
-    console.log(에러)
-  }
-  응답.status(200).send({ message: '성공했습니다.' })
 })
 
 app.post('/register', function (요청, 응답) {
