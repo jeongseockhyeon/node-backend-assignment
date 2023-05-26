@@ -42,7 +42,12 @@
       <li class="list-group-item">
         <h4>할일 제목 : <%= posts[i].제목 %></h4>
         <p>할일 마감날짜 : <%= posts[i].날짜 %></p>
-        <button class="delete" data-id="<%= posts[i]._id %>">삭제</button>
+        <button class="btn btn-danger delete" data-id="<%= posts[i]._id %>">
+          삭제
+        </button>
+        <button class="btn btn-secondary chat" data-id="<%= posts[i].작성자 %>">
+          채팅
+        </button>
       </li>
       <% } %>
     </ul>
@@ -58,6 +63,14 @@
           data: { _id: event.target.dataset.id },
         }).done((결과) => {
           $(this).parent('li').fadeOut()
+        })
+      })
+    </script>
+    <script>
+      $('.chat').click(function () {
+        var id = event.target.dataset.id
+        $.post('/chatroom', { 당한사람id: id }).then(() => {
+          console.log('성공')
         })
       })
     </script>
