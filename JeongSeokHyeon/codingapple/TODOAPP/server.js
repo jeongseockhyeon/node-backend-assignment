@@ -14,6 +14,8 @@ app.use('/public', express.static('public'))
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 
+require('dotenv').config()
+
 const MongoClient = require('mongodb').MongoClient
 
 app.get('/pet', function (요청, 응답) {
@@ -49,7 +51,7 @@ app.get('/detail/:id', function (요청, 응답) {
 var db
 
 MongoClient.connect(
-  'mongodb+srv://jsh:jsh1357924605@cluster0.vavbgct.mongodb.net/?retryWrites=true&w=majority',
+  process.env.MONGODB_URL,
   { useUnifiedTopology: true },
   function (에러, client) {
     if (에러) return console.log(에러)
@@ -62,7 +64,7 @@ MongoClient.connect(
       }
     )
 
-    http.listen(8080, function () {
+    http.listen(process.env.PORT, function () {
       console.log('listening on 8080')
     })
   }
