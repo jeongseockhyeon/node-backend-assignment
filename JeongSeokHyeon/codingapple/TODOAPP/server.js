@@ -4,6 +4,10 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const { ObjectId } = require('mongodb')
 
+const http = require('http').createServer(app)
+const { Server } = require('socket.io')
+const io = new Server(http)
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 app.use('/public', express.static('public'))
@@ -58,7 +62,7 @@ MongoClient.connect(
       }
     )
 
-    app.listen(8080, function () {
+    http.listen(8080, function () {
       console.log('listening on 8080')
     })
   }
@@ -319,5 +323,25 @@ app.get('/message/:parentid', 로그인했니, function (요청, 응답) {
     응답.write('event: test\n')
     var 추가된문서 = [result.fullDocument]
     응답.write(`data: ${JSON.stringify(추가된문서)}\n\n`)
+  })
+})
+
+app.get('/socket', function (요청, 응답) {
+  응답.render('socket.ejs')
+})
+
+io.on('connection', function (socket) {
+  console.log('유저 접속')
+
+  socket.on('joinroom', function (data) {
+    socket.join('room1')
+  })
+
+  socket.on('room1-send', function (data) {
+    io.to('room1').emit('broadcast', data)
+  })
+
+  socket.on('user-send', function (data) {
+    io.emit('broadcast', data)
   })
 })
