@@ -299,7 +299,7 @@ app.post('/message', 로그인했니, function (요청, 응답) {
     })
 })
 
-app.get('/message/:parentid', 로그인했니, function (요청, 응답) {
+app.get('/message/:id', 로그인했니, function (요청, 응답) {
   응답.writeHead(200, {
     Connection: 'keep-alive',
     'Content-Type': 'text/event-stream',
@@ -307,22 +307,21 @@ app.get('/message/:parentid', 로그인했니, function (요청, 응답) {
   })
 
   db.collection('message')
-    .find({ parent: 요청.params.parentid })
+    .find({ parent: 요청.params.id })
     .toArray()
     .then((결과) => {
       console.log(결과)
       응답.write('event: test\n')
-      응답.write(`data: ${JSON.stringify(결과)}\n\n`)
+      응답.write('data:' + JSON.stringify(결과) + '\n\n')
     })
 
-  const 찾을문서 = [{ $match: { 'fullDocument.parent': 요청.params.parentid } }]
-
-  const changeStream = db.collection('message').watch(찾을문서)
+  const pipeline = [{ $match: { 'fullDocument.parent': 요청.params.id } }]
+  const collection = db.collection('message')
+  const changeStream = collection.watch(pipeline)
   changeStream.on('change', (result) => {
     console.log(result.fullDocument)
     응답.write('event: test\n')
-    var 추가된문서 = [result.fullDocument]
-    응답.write(`data: ${JSON.stringify(추가된문서)}\n\n`)
+    응답.write('data: ' + JSON.stringify([result.fullDocument]) + '\n\n')
   })
 })
 
