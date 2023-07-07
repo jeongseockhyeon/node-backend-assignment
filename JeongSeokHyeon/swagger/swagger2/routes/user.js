@@ -38,38 +38,6 @@ const users = [
  *         type: string
  *
  */
-/**
- * @swagger
- * paths:
- *  /user/nickname:
- *   post:
- *    tags:
- *    - user
- *    description: 닉네임 조회
- *    parameters:
- *    - in: body
- *      name: body
- *      required: true
- *      schema:
- *       properties:
- *        id:
- *         type: string
- *        pw:
- *         type: string
- *    responses:
- *     200:
- *      description: 닉네임 조회 성공
- *      shema:
- *       properties:
- *        message:
- *         type: string
- *     401:
- *      description: 닉네임 조회 실패
- *      shema:
- *       protpertes:
- *        message:
- *         type: string
- */
 router.post('/nickname', async (req, res, next) => {
   try {
     for (let i = 0; i < users.length; i++) {
