@@ -12,7 +12,12 @@ const users = [
 app.use(morgan('dev'))
 
 app.get('/users', (req, res) => {
-  res.json(users)
+  req.query.limit = req.query.limit || 10
+  const limit = parseInt(req.query.limit, 10) //"2"라는 문자열로 들어온다 => parseInt(인자값,진수)를 사용해 정수로 변환
+  if (Number.isNaN(limit)) {
+    return res.status(400).end()
+  }
+  res.json(users.slice(0, limit))
 })
 
 app.listen(port, () => {
